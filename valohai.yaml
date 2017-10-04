@@ -1,0 +1,30 @@
+---
+
+- step:
+    name: Hello world example
+    image: r-base:3.4.2
+    command: Rscript hello_world_example.R
+
+- step:
+    name: Metadata example
+    image: r-base:3.4.2
+    command: Rscript metadata_example.R {parameters}
+    parameters:
+    - name: max-epoch
+      pass-as: '{v}'
+      description: First example parameter, controls demo epoch count
+      type: integer
+      default: 100
+    - name: loss-decrement
+      pass-as: '{v}'
+      description: Second example parameter, controls demo loss decrement
+      type: float
+      default: 0.01
+
+- step:
+    name: CPU worker environment check
+    image: r-base:3.4.2
+    command:
+      - pwd
+      - ls -la
+      - R --version
