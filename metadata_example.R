@@ -28,6 +28,9 @@ for (epoch in 1:maxEpochs) {
   metadataEvent <- list()
   metadataEvent[["epoch"]] <- epoch
   metadataEvent[["loss"]] <- loss
+  if (epoch == ceiling(maxEpochs / 2)) {
+    metadataEvent[["half-loss"]] <- loss
+  }
   write(toJSON(metadataEvent, auto_unbox=TRUE), stdout())
   loss <- max(0.0, (loss - lossDecrement))
 }
