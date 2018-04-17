@@ -32,5 +32,10 @@ for (epoch in 1:maxEpochs) {
     metadataEvent[["half-loss"]] <- loss
   }
   write(toJSON(metadataEvent, auto_unbox=TRUE), stdout())
-  loss <- max(0.0, (loss - lossDecrement))
+  if (sample(c(TRUE, FALSE), 1)) {
+    loss <- min(max(0.0, (loss + lossDecrement)), 1)
+  }
+  else {
+    loss <- min(max(0.0, (loss - lossDecrement)), 1)
+  }
 }
