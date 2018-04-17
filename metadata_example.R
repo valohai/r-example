@@ -16,7 +16,7 @@ if (lossDecrement <= 0) {
 loss <- 1
 
 for (epoch in 1:maxEpochs) {
-  Sys.sleep(0.1)
+  Sys.sleep(0.25)
   metadata <- paste('{"epoch": ', epoch, ', "loss": ', loss, '}', sep = '')
   write(metadata, stdout())
   loss <- max(0.0, (loss - lossDecrement))
