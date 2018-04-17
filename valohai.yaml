@@ -19,7 +19,7 @@
       pass-as: '{v}'
       description: Second example parameter, controls demo loss decrement
       type: float
-      default: 0.01
+      default: 0.05
 
 - step:
     name: CPU worker environment check
